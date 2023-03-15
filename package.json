@@ -1,0 +1,22 @@
+{
+  "name": "google_doc_nodebe",
+  "version": "1.0.0",
+  "description": "Google Document Clone Project Backend, written in Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Tuan Vu",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "http": "0.0.1-security",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.2",
+    "nodemon": "^2.0.21",
+    "socket.io": "^2.3.0"
+  }
+}
