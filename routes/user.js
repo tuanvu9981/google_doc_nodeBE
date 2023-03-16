@@ -1,7 +1,10 @@
-const express = require('express');
-const User = require('../models/user');
-
+const express = require("express");
+const User = require("../models/user");
+const jwt = require("jsonwebtoken");
+const auth = require("../middleware/auth");
 const authRouter = express.Router();
+require('dotenv').config();
+const JWT_KEY = process.env.JWT_KEY;
 
 authRouter.post('/api/signup', async (req, res) => {
     try {
@@ -17,8 +20,17 @@ authRouter.post('/api/signup', async (req, res) => {
             });
             user = await user.save();
         }
-        res.json({ user }); 
-    } catch (e) { }
+        const token = jwt.sign({ id: user._id }, JWT_KEY);
+        res.json({ user, token });
+        // equal to res.json({user})
+    } catch (e) {
+        res.json({ message: e.message });
+    }
+});
+
+authRouter.get('/', auth, async (req, res) => {
+    const user = await User.findById(req.user);
+    res.json({ user, token: req.token });
 });
 
 module.exports = authRouter;
