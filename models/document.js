@@ -5,7 +5,7 @@ const documentSchema = mongoose.Schema({
         required: true,
         type: String
     },
-    createAt: {
+    createdAt: {
         require: true,
         type: Number
     },

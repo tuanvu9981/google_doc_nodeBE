@@ -9,7 +9,7 @@ documentRouter.post('/doc/create', auth, async (req, res) => {
         let document = new Document({
             uid: req.user, // after being auth
             title: "Untitled Document",
-            createdAt
+            createdAt: createdAt
         });
         document = await document.save();
         res.json({ document });
